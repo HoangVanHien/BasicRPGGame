@@ -127,5 +127,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("LoadState");
 
         player.transform.position = GameObject.Find("SpawnPlace").transform.position;
+        GameObject.Find("Generator").GetComponentInChildren<MapGenerator>().GenerateNewMap(30, 30);
     }
 }

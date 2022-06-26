@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1156393390}
   m_Layer: 7
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -215504345
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1e642a46a7d33684cbed8b346464053f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0812db18ee3af774da00ae06e92964ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,18 +97,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000000029802322, y: 0.014364645}
+  m_Offset: {x: -0.0052631497, y: 0.019815788}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16161616, y: 0.16161616}
+    oldSize: {x: 0.16161616, y: 0.24242425}
     newSize: {x: 0.16161616, y: 0.16161616}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.101421416, y: 0.09047696}
+  m_Size: {x: 0.09089506, y: 0.079574674}
   m_EdgeRadius: 0
 --- !u!95 &1156393390
 Animator:
@@ -120,7 +120,7 @@ Animator:
   m_GameObject: {fileID: 1156393388}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef970c85e2cb4424395eada5a8ba7bd7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -174,7 +174,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.29791266, y: -0.3284583}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -185,7 +185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4041747, y: 1.6569164}
   m_EdgeRadius: 0
 --- !u!114 &3896994461060120913
 MonoBehaviour:
@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec24ebae22bcc540ae271f08eac297b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterAnimator: {fileID: 1156393390}
   hitpoint: 10
   maxHitpoint: 10
   pushRecoverySpeed: 0.2

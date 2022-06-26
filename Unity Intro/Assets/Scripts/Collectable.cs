@@ -8,7 +8,7 @@ public class Collectable : Collidable
 
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.name == "Player") 
+        if (coll.transform.parent.name == "Player") 
            OnCollect();
     }
 
