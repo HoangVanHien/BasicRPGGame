@@ -17,14 +17,16 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;//To make all the instance being call become this
-        SceneManager.sceneLoaded += LoadState;//sceneLoaded will duplicate the GameManager itself, contain all the function after +=
-        DontDestroyOnLoad(gameObject);//prevent this gameObject (GameManager) from being deleted when load a new scene
+        //DontDestroyOnLoad(gameObject);//prevent this gameObject (GameManager) from being deleted when load a new scene
     }
+
+    //game
+    public EndGame endGame;
 
     //ressources
     //public List<Sprite> playerSprites;
     //public List<Sprite> weaponSprites;
-    public List<int> weaponPrices;
+    public int weaponPrice = 40;
     public List<int> xpTable;
 
     //references
@@ -43,14 +45,10 @@ public class GameManager : MonoBehaviour
 
     public bool TryUpgradeWeapon()
     {
-        //is the weapon max lv
-        if (weaponPrices.Count <= weapon.weaponLevel)
+        if(gold >= weaponPrice)
         {
-            return false;
-        }
-        if(gold >= weaponPrices[weapon.weaponLevel])
-        {
-            gold -= weaponPrices[weapon.weaponLevel];
+            gold -= weaponPrice;
+            weaponPrice += 50;
             weapon.UpgradeWeapon();
             return true;
         }
@@ -98,35 +96,35 @@ public class GameManager : MonoBehaviour
 
     //SaveState
     //Skin, Gold, Exp, weaponLv
-    public void SaveState()
-    {
-        string s = "";
+    //public void SaveState()
+    //{
+    //    string s = "";
 
-        s += "0" + "|";
-        s += gold.ToString() + "|";
-        s += experience.ToString() + "|";
-        s += weapon.weaponLevel.ToString() +"|";
+    //    s += "0" + "|";
+    //    s += gold.ToString() + "|";
+    //    s += experience.ToString() + "|";
+    //    s += weapon.weaponLevel.ToString() +"|";
 
-        PlayerPrefs.SetString("SaveState", s);
-        Debug.Log("SaveState");
-    }
+    //    PlayerPrefs.SetString("SaveState", s);
+    //    Debug.Log("SaveState");
+    //}
 
-    public void LoadState(Scene s, LoadSceneMode mode)
-    {
-        //SceneManager.sceneLoaded -= LoadState;//prevent sceneLoaded from duplicate LoadState twice
+    //public void LoadState(Scene s, LoadSceneMode mode)
+    //{
+    //    //SceneManager.sceneLoaded -= LoadState;//prevent sceneLoaded from duplicate LoadState twice
 
-        if (!PlayerPrefs.HasKey("SaveState")) return;
+    //    if (!PlayerPrefs.HasKey("SaveState")) return;
 
-        string[] data = PlayerPrefs.GetString("SaveState").Split('|');//split the whole string with '|'
-        gold = int.Parse(data[1]);
-        
-        experience = int.Parse(data[2]);
-        player.SetLevel(GetCurrentLevel());
+    //    string[] data = PlayerPrefs.GetString("SaveState").Split('|');//split the whole string with '|'
+    //    gold = int.Parse(data[1]);
 
-        weapon.SetWeaponLevel(int.Parse(data[3]));
-        Debug.Log("LoadState");
+    //    experience = int.Parse(data[2]);
+    //    player.SetLevel(GetCurrentLevel());
 
-        player.transform.position = GameObject.Find("SpawnPlace").transform.position;
-        GameObject.Find("Generator").GetComponentInChildren<MapGenerator>().GenerateNewMap(10, 10);
-    }
+    //    weapon.SetWeaponLevel(int.Parse(data[3]));
+    //    Debug.Log("LoadState");
+
+    //    player.transform.position = GameObject.Find("SpawnPlace").transform.position;
+    //    GameObject.Find("Generator").GetComponentInChildren<MapGenerator>().DifficultyMapGenerate(difficulty);
+    //}
 }

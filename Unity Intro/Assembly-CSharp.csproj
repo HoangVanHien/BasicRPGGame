@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\PrintOutLayerFix.cs" />
     <Compile Include="Assets\Scripts\Mover.cs" />
     <Compile Include="Assets\Scripts\FloatingTextManager.cs" />
+    <Compile Include="Assets\Scripts\WeaponUpgradeMenu.cs" />
     <Compile Include="Assets\Scripts\Chest.cs" />
     <Compile Include="Assets\Scripts\CharacterMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerDetailHUD.cs" />
@@ -73,7 +74,10 @@
     <Compile Include="Assets\Scripts\Collectable.cs" />
     <Compile Include="Assets\Scripts\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Collidable.cs" />
-    <Compile Include="Assets\Scripts\WeaponUpgradeMenu.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MySceneManager.cs" />
+    <Compile Include="Assets\Scripts\EndGame.cs" />
+    <Compile Include="Assets\Scripts\WinObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

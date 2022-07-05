@@ -9,7 +9,6 @@ public class Weapon : Collidable
     public float pushForce = 2.0f;
 
     //Upgrade
-    public int weaponLevel = 0;
     private SpriteRenderer spriteRenderer;
 
     //Attack
@@ -73,13 +72,6 @@ public class Weapon : Collidable
 
     public void UpgradeWeapon()
     {
-        weaponLevel++;
-        //spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
-    }
-
-    public void SetWeaponLevel(int lv)
-    {
-        weaponLevel = lv;
-        //spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
+        damagePoint += 3;
     }
 }

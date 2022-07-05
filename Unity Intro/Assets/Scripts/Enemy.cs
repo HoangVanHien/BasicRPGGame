@@ -18,6 +18,8 @@ public class Enemy : Mover
     private BoxCollider2D hitbox;
     private Collider2D[] hits = new Collider2D[10];
 
+    public EnemyHitbox enemyHitbox;
+
     protected override void Start()
     {
         base.Start();
@@ -70,8 +72,18 @@ public class Enemy : Mover
 
     protected override void Death()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.ShowText("+" + xpValue + " exp", 30, Color.magenta,transform.position, Vector3.up * 40, 0.5f);
+        Invoke("Respawn", 10f);
+    }
+
+    protected void Respawn()
+    {
+        enemyHitbox.damagePoint += 30;
+        xpValue += 10;
+        maxHealthpoint += 40;
+        healthpoint = maxHealthpoint;
+        gameObject.SetActive(true);
     }
 }

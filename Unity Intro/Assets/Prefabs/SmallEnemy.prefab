@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAnimator: {fileID: 1156393390}
-  hitpoint: 10
-  maxHitpoint: 10
+  healthpoint: 20
+  maxHealthpoint: 20
   pushRecoverySpeed: 0.2
   groundCollider: {fileID: 887707035}
   xpValue: 1
@@ -331,6 +331,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  enemyHitbox: {fileID: 3896994461060120913}
 --- !u!114 &1422127076611257532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,4 +344,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814ec977a94ec0b49a6541f552bd436a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1156393391}
+  spriteRenderer:
+  - {fileID: 1156393391}

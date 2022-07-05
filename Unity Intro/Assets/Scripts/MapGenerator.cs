@@ -18,8 +18,37 @@ public class MapGenerator : MonoBehaviour
     public List<GameObject> floorPieces = new List<GameObject>();
     public GameObject wallLeft;
     public List<GameObject> wallDown = new List<GameObject>();
+    public GameObject chest;
+    public GameObject winObject;
 
     [SerializeField] private EnemyGenerator enemyGenerator;
+
+    private void Start()
+    {
+        DifficultyMapGenerate(MySceneManager.instance.difficulty);
+    }
+
+    public void DifficultyMapGenerate(int diffiulty)
+    {
+        switch (diffiulty)
+        {
+            case 2:
+                {
+                    GenerateNewMap(30, 30);
+                    break;
+                }
+            case 1:
+                {
+                    GenerateNewMap(20, 20);
+                    break;
+                }
+            default:
+                {
+                    GenerateNewMap(10, 10);
+                    break;
+                }
+        }
+    }
 
     public void GenerateNewMap(int mapWidth, int mapHeight)
     {
@@ -40,6 +69,13 @@ public class MapGenerator : MonoBehaviour
                 {
                     makeWallLeft(newMap, wallOrderLayer, Vector3.zero);
                 }
+
+                if (Random.Range(1, 100) <= 20)
+                {
+                    GameObject tmpChest = Instantiate(chest, newMap);
+                    tmpChest.transform.localPosition = Vector3.zero;
+                    tmpChest.GetComponent<Chest>().goldAmount = Random.Range(5, 50);
+                }
             }
         }
         for (int i = 0; i < mapWidth; i++)
@@ -51,12 +87,14 @@ public class MapGenerator : MonoBehaviour
             makeWallLeft(transform, -2 * j * pieceYSize + 2, new Vector3((float)mapWidth * 0.16f * pieceXSize, (float)j * 0.16f * pieceYSize));
         }
 
-        if(enemyGenerator == null)
+        winObject.transform.position = new Vector3((float)(mapWidth -1) * 0.16f * pieceXSize, (float)(mapHeight - 1) * 0.16f * pieceYSize);
+
+        if (enemyGenerator == null)
         {
             Debug.Log("enemyGenerator null");
             return;
         }
-        enemyGenerator.RandomSpawn((float)mapWidth * 0.16f * (float)pieceXSize, (float)mapHeight * 0.16f * (float)pieceYSize, mapWidth * mapHeight * pieceXSize * pieceYSize /100 +1, 0.3f, 1f);
+        enemyGenerator.RandomSpawn((float)(mapWidth - 1) * 0.16f * (float)pieceXSize, (float)(mapHeight - 1) * 0.16f * (float)pieceYSize, mapWidth * mapHeight * pieceXSize * pieceYSize /100 +1, 0.3f, 1f);
     }
 
     private Transform makeNewFloor(int xMazeCount, int yMazeCount)

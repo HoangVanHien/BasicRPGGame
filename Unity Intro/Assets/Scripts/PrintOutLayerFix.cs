@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PrintOutLayerFix : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    public List<SpriteRenderer> spriteRenderer = new List<SpriteRenderer>();
 
     private void FixedUpdate()
     {
-        spriteRenderer.sortingOrder = -Mathf.RoundToInt(transform.position.y / 0.16f) * 2 + 1;
+        foreach (SpriteRenderer sr in spriteRenderer)
+        {
+            sr.sortingOrder = -Mathf.RoundToInt(transform.position.y / 0.16f) * 2 + 1;
+        }
     }
 }

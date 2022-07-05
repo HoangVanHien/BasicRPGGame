@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Mover
 {
-    private SpriteRenderer spriteRenderer;
     public int mana = 20;
     public int maxMana = 20;
 
@@ -14,8 +13,8 @@ public class Player : Mover
     protected override void Start()
     {
         base.Start();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        DontDestroyOnLoad(gameObject);
+        transform.position = GameObject.Find("SpawnPlace").transform.position;
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void FixedUpdate()
@@ -56,5 +55,10 @@ public class Player : Mover
         {
             OnLevelUp();
         }
+    }
+
+    protected override void Death()
+    {
+        GameManager.instance.endGame.LoseGame();
     }
 }
