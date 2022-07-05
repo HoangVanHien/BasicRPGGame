@@ -8,8 +8,8 @@ public class Fighter : MonoBehaviour
     public Animator characterAnimator;
 
     //Public feilds
-    public int hitpoint = 10;
-    public int maxHitpoint = 10;
+    public int healthpoint = 20;
+    public int maxHealthpoint = 20;
     public float pushRecoverySpeed = 0.2f;
 
     //Immunity
@@ -24,7 +24,7 @@ public class Fighter : MonoBehaviour
         if (Time.time - lastImmune > immuneTime)
         {
             lastImmune = Time.time;
-            hitpoint -= dmg.damageAmount;
+            healthpoint -= dmg.damageAmount;
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
 
             GameManager.instance.ShowText(dmg.damageAmount.ToString(), 30, Color.red, transform.position, pushDirection * 50f, 0.5f);
@@ -33,9 +33,9 @@ public class Fighter : MonoBehaviour
             characterAnimator.SetTrigger("GetHit");
 
 
-            if (hitpoint <= 0)
+            if (healthpoint <= 0)
             {
-                hitpoint = 0;
+                healthpoint = 0;
                 Death();
             }
         }

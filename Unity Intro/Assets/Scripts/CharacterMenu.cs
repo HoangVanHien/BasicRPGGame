@@ -14,82 +14,82 @@ public class CharacterMenu : MonoBehaviour
     public Image weaponSprite;
     public RectTransform xpBar;
 
-    //Character selection
-    public void OnArrowClick(bool right)
-    {
-        if (right)
-        {
-            currentCharacterSelection++;
+    ////Character selection
+    //public void OnArrowClick(bool right)
+    //{
+    //    if (right)
+    //    {
+    //        currentCharacterSelection++;
             
-            //if we went too far
-            if (currentCharacterSelection == GameManager.instance.playerSprites.Count)
-            {
-                currentCharacterSelection = 0;
-            }
+    //        //if we went too far
+    //        if (currentCharacterSelection == GameManager.instance.playerSprites.Count)
+    //        {
+    //            currentCharacterSelection = 0;
+    //        }
 
-            OnSelectionChanged();
-        }
+    //        OnSelectionChanged();
+    //    }
 
-        else
-        {
-            currentCharacterSelection--;
+    //    else
+    //    {
+    //        currentCharacterSelection--;
 
-            //if we went too far
-            if (currentCharacterSelection <0)
-            {
-                currentCharacterSelection = GameManager.instance.playerSprites.Count - 1;
-            }
+    //        //if we went too far
+    //        if (currentCharacterSelection <0)
+    //        {
+    //            currentCharacterSelection = GameManager.instance.playerSprites.Count - 1;
+    //        }
 
-            OnSelectionChanged();
-        }
-    }
+    //        OnSelectionChanged();
+    //    }
+    //}
 
-    private void OnSelectionChanged()
-    {
-        characterSelectionSprite.sprite = GameManager.instance.playerSprites[currentCharacterSelection];
-        GameManager.instance.player.SwapSprite(currentCharacterSelection);
-    }
+    //private void OnSelectionChanged()
+    //{
+    //    characterSelectionSprite.sprite = GameManager.instance.playerSprites[currentCharacterSelection];
+    //    GameManager.instance.player.SwapSprite(currentCharacterSelection);
+    //}
 
-    public void OnUpgradeClick()
-    {
-        if (GameManager.instance.TryUpgradeWeapon())
-        {
-            UpdateMenu();
-        }
-    }
+    //public void OnUpgradeClick()
+    //{
+    //    if (GameManager.instance.TryUpgradeWeapon())
+    //    {
+    //        UpdateMenu();
+    //    }
+    //}
 
-    public void UpdateMenu()
-    {
-        //Weapon
-        int weaponLv= GameManager.instance.weapon.weaponLevel;
-        weaponSprite.sprite = GameManager.instance.weaponSprites[weaponLv];
-        if (weaponLv < GameManager.instance.weaponPrices.Count) upgradeCostText.text = GameManager.instance.weaponPrices[weaponLv].ToString();
-        else upgradeCostText.text = "MAX";
+    //public void UpdateMenu()
+    //{
+    //    //Weapon
+    //    int weaponLv= GameManager.instance.weapon.weaponLevel;
+    //    weaponSprite.sprite = GameManager.instance.weaponSprites[weaponLv];
+    //    if (weaponLv < GameManager.instance.weaponPrices.Count) upgradeCostText.text = GameManager.instance.weaponPrices[weaponLv].ToString();
+    //    else upgradeCostText.text = "MAX";
 
-        //Meta
-        int currentLevel = GameManager.instance.GetCurrentLevel();
+    //    //Meta
+    //    int currentLevel = GameManager.instance.GetCurrentLevel();
 
-        levelText.text = currentLevel.ToString();
-        hitpointText.text = GameManager.instance.player.hitpoint.ToString();
-        goldText.text = GameManager.instance.gold.ToString();
+    //    levelText.text = currentLevel.ToString();
+    //    hitpointText.text = GameManager.instance.player.hitpoint.ToString();
+    //    goldText.text = GameManager.instance.gold.ToString();
 
-        //xp bar
-        if (currentLevel == GameManager.instance.xpTable.Count+1)
-        {
-            xpText.text = "Max";
-            xpBar.localScale = Vector3.one;
-        }
-        else
-        {
-            int prevLevelXp = GameManager.instance.GetXpToLevel(currentLevel - 1);
-            int curLevelXp = GameManager.instance.GetXpToLevel(currentLevel);
+    //    //xp bar
+    //    if (currentLevel == GameManager.instance.xpTable.Count+1)
+    //    {
+    //        xpText.text = "Max";
+    //        xpBar.localScale = Vector3.one;
+    //    }
+    //    else
+    //    {
+    //        int prevLevelXp = GameManager.instance.GetXpToLevel(currentLevel - 1);
+    //        int curLevelXp = GameManager.instance.GetXpToLevel(currentLevel);
 
-            int diff = curLevelXp - prevLevelXp;
-            int curXpIntoLevel = GameManager.instance.experience - prevLevelXp;
-            float completionRaito = (float)curXpIntoLevel / (float)curLevelXp;
+    //        int diff = curLevelXp - prevLevelXp;
+    //        int curXpIntoLevel = GameManager.instance.experience - prevLevelXp;
+    //        float completionRaito = (float)curXpIntoLevel / (float)curLevelXp;
 
-            xpBar.localScale = new Vector3(completionRaito, 1, 1);
-            xpText.text = curXpIntoLevel.ToString() + "/" + diff.ToString();
-        }
-    }
+    //        xpBar.localScale = new Vector3(completionRaito, 1, 1);
+    //        xpText.text = curXpIntoLevel.ToString() + "/" + diff.ToString();
+    //    }
+    //}
 }

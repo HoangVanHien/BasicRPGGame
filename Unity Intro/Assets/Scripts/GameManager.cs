@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     }
 
     //ressources
-    public List<Sprite> playerSprites;
-    public List<Sprite> weaponSprites;
+    //public List<Sprite> playerSprites;
+    //public List<Sprite> weaponSprites;
     public List<int> weaponPrices;
     public List<int> xpTable;
 
@@ -127,6 +127,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("LoadState");
 
         player.transform.position = GameObject.Find("SpawnPlace").transform.position;
-        GameObject.Find("Generator").GetComponentInChildren<MapGenerator>().GenerateNewMap(30, 30);
+        GameObject.Find("Generator").GetComponentInChildren<MapGenerator>().GenerateNewMap(10, 10);
     }
 }

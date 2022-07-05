@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : Collidable
 {
     //Damage
-    public int[] damagePoint = { 1, 1, 2, 3 };
+    public int damagePoint = 10;
     public float pushForce = 2.0f;
 
     //Upgrade
@@ -48,7 +48,7 @@ public class Weapon : Collidable
         {
             if (coll.transform.parent.name != "Player")
             {
-                Damage dmg = new Damage(transform.position, damagePoint[weaponLevel], pushForce);
+                Damage dmg = new Damage(transform.position, damagePoint, pushForce);
                 Debug.Log("Dmg: " + dmg.damageAmount + " " + dmg.pushForce);
                 coll.transform.parent.SendMessage("ReceiveDamage",dmg);
             }
@@ -74,12 +74,12 @@ public class Weapon : Collidable
     public void UpgradeWeapon()
     {
         weaponLevel++;
-        spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
+        //spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
     }
 
     public void SetWeaponLevel(int lv)
     {
         weaponLevel = lv;
-        spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
+        //spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
     }
 }

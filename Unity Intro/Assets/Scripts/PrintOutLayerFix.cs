@@ -8,6 +8,6 @@ public class PrintOutLayerFix : MonoBehaviour
 
     private void FixedUpdate()
     {
-        spriteRenderer.sortingOrder = -Mathf.RoundToInt(transform.position.y / 0.16f);
+        spriteRenderer.sortingOrder = -Mathf.RoundToInt(transform.position.y / 0.16f) * 2 + 1;
     }
 }

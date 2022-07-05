@@ -48,9 +48,6 @@ TagManager:
   - name: Collidable
     uniqueID: 3407441241
     locked: 0
-  - name: Character
+  - name: MidObject
     uniqueID: 4079462951
-    locked: 0
-  - name: Weapon
-    uniqueID: 3410556807
     locked: 0

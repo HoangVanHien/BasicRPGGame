@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mover : Fighter
 {
-    [SerializeField] protected BoxCollider2D boxCollider;
+    [SerializeField] private CircleCollider2D groundCollider;
     protected Vector3 moveDelta;
     protected RaycastHit2D hit;
     protected float xSpeed = 0.75f;
@@ -46,14 +46,14 @@ public class Mover : Fighter
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);//reduce pushDirection
 
         //Check to know if there is a thing in the direction we want to go
-        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Blocking", "Character"));
+        hit = Physics2D.CircleCast(groundCollider.transform.position + (Vector3)groundCollider.offset, groundCollider.radius, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Blocking"));
         if (hit.collider == null)
         {
             //Move
             transform.Translate(0, moveDelta.y * Time.deltaTime, 0);//Time.deltaTime to make it go with the real time
         }
 
-        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Blocking", "Character"));
+        hit = Physics2D.CircleCast(groundCollider.transform.position + (Vector3)groundCollider.offset, groundCollider.radius, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Blocking"));
         if (hit.collider == null)
         {
             //Move

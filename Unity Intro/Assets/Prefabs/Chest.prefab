@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -887526055
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4971049064686688367, guid: 173bac49c8d555e429d070edc18a65fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 265b6b18596c5c643a8a9fec56e9aefd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  emptyChest: {fileID: -1988828135353101337, guid: 173bac49c8d555e429d070edc18a65fb, type: 3}
+  emptyChest: {fileID: 21300000, guid: b0ce2e49603f7cf41950f6b39c75d54e, type: 3}
   goldAmount: 5
 --- !u!61 &1537511796029321021
 BoxCollider2D:
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.16161616, y: 0.16161616}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

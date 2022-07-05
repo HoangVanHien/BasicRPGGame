@@ -5,6 +5,11 @@ using UnityEngine;
 public class Player : Mover
 {
     private SpriteRenderer spriteRenderer;
+    public int mana = 20;
+    public int maxMana = 20;
+
+    private float lastManaUp = 0;
+    private float manaUpDuration = 0.5f;
 
     protected override void Start()
     {
@@ -18,17 +23,31 @@ public class Player : Mover
         float x = Input.GetAxisRaw("Horizontal");//-1 left, 0 nothing, 1 right
         float y = Input.GetAxisRaw("Vertical");
         UpdateMotor(new Vector3(x, y, 0));
+        UpdateMana();
     }
 
-    public void SwapSprite(int skinID)
+    private void UpdateMana()
     {
-       spriteRenderer.sprite = GameManager.instance.playerSprites[skinID];
+        if (Time.time - lastManaUp >= manaUpDuration)
+        {
+            if (mana < maxMana)
+            {
+                mana += 1;
+                lastManaUp = Time.time;
+            }
+        }
     }
+
+    //public void SwapSprite(int skinID)
+    //{
+    //   spriteRenderer.sprite = GameManager.instance.playerSprites[skinID];
+    //}
 
     public void OnLevelUp()
     {
-        maxHitpoint++;
-        hitpoint = maxHitpoint;
+        maxHealthpoint += 20;
+        healthpoint = maxHealthpoint;
+        maxMana += 10;
     }
 
     public void SetLevel(int level)
