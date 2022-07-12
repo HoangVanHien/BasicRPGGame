@@ -17,6 +17,8 @@ public class EnemyGenerator : MonoBehaviour
             newEnemy.chaseLenght = chaseLenght;
             newEnemy.characterAnimator.runtimeAnimatorController = smallEnemyAnimators[Random.Range(0, smallEnemyAnimators.Count)];
             newEnemy.transform.position = new Vector3(Random.Range(0.32f, xMaxPos), Random.Range(0.32f, yMaxPos), 0);
+            newEnemy.maxHealthpoint += (int)(Mathf.Sqrt(xMaxPos * yMaxPos) / 0.16f * Random.Range(0, 3));
+            newEnemy.healthpoint = newEnemy.maxHealthpoint;
         }
     }
 }
